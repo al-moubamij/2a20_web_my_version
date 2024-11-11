@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Éducatif</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+   
+
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="css/fontAwesome.css">
+    <link rel="stylesheet" href="css/light-box.css">
+    <link rel="stylesheet" href="css/owl-carousel.css">
+    <link rel="stylesheet" href="css/templatemo-style.css">
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
+
+    <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+
+
+
+
+
+
+
+
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #7f8c8d, #bdc3c7);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .quiz-container {
+            
+            background-color: #ffffff;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            border-radius: 15px;
+            width: 100%;
+            max-width: 800px;
+            overflow: hidden;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 36px;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 30px;
+        }
+
+        .instructions {
+            font-size: 18px;
+            color: #34495e;
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .question-container {
+            background-color: #f7fafc;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .question-container p {
+            font-size: 18px;
+            font-weight: 500;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+
+        .answer-option {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .answer-option input[type="radio"] {
+            margin-right: 15px;
+            accent-color: #2980b9;
+        }
+
+        .answer-option label {
+            font-size: 16px;
+            color: #34495e;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .answer-option label:hover {
+            color: #2980b9;
+        }
+
+        button {
+            background-color: #2980b9;
+            color: #fff;
+            border: none;
+            padding: 15px;
+            width: 100%;
+            font-size: 18px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #3498db;
+        }
+
+        #result {
+            text-align: center;
+            font-size: 22px;
+            font-weight: 600;
+            margin-top: 30px;
+            color: #2980b9;
+        }
+
+        /* Mobile responsiveness */
+        @media (max-width: 600px) {
+            .quiz-container {
+                padding: 15px;
+                width: 90%;
+            }
+
+            h1 {
+                font-size: 28px;
+            }
+
+            .instructions {
+                font-size: 16px;
+            }
+
+            .question-container p {
+                font-size: 16px;
+            }
+
+            button {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="nav-down responsive-nav hidden-lg hidden-md">
+        <button type="button" id="nav-toggle" class="navbar-toggle" data-toggle="collapse" data-target="#main-nav">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <!--/.navbar-header-->
+        <div id="main-nav" class="collapse navbar-collapse">
+            <nav>
+                <ul class="nav navbar-nav">
+                    <li><a href="#top">Home</a></li>
+                    <li><a href="#formations">Formations</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <div class="sidebar-navigation hidde-sm hidden-xs">
+        <div class="logo">
+            <a href="#">Sen<em>tra</em></a>
+        </div>
+        <nav>
+            <ul>
+                <li>
+                    <a href="#top">
+                        <span class="rect"></span>
+                        <span class="circle"></span>
+                        Home
+                    </a>
+                </li>
+                <li>
+                    <a href="#formations">
+                        <span class="rect"></span>
+                        <span class="circle"></span>
+                        Formations
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <ul class="social-icons">
+            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+            <li><a href="#"><i class="fa fa-rss"></i></a></li>
+            <li><a href="#"><i class="fa fa-behance"></i></a></li>
+        </ul>
+    </div>
+
+    <div class="quiz-container">
+        <h1>Quiz PHP</h1>
+        <div class="instructions">
+            Répondez aux questions en sélectionnant l'option correcte. Une fois terminé, cliquez sur "Soumettre les réponses".
+        </div>
+
+        <form id="quizForm">
+            <!-- Question 1 -->
+            <div class="question-container">
+                <p>1. Que signifie PHP ?</p>
+                <div class="answer-option"><input type="radio" name="q1" value="A" id="q1a"><label for="q1a">A: Personal Hypertext Processor</label></div>
+                <div class="answer-option"><input type="radio" name="q1" value="B" id="q1b"><label for="q1b">B: Preprocessed Hypertext Processor</label></div>
+                <div class="answer-option"><input type="radio" name="q1" value="C" id="q1c"><label for="q1c">C: PHP : Hypertext Preprocessor</label></div>
+                <div class="answer-option"><input type="radio" name="q1" value="D" id="q1d"><label for="q1d">D: Public Hypertext Processor</label></div>
+            </div>
+
+            <!-- Question 2 -->
+            <div class="question-container">
+                <p>2. Quel est le code utilisé pour commencer un script PHP ?</p>
+                <div class="answer-option"><input type="radio" name="q2" value="A" id="q2a"><label for="q2a">A: &lt;script&gt;</label></div>
+                <div class="answer-option"><input type="radio" name="q2" value="B" id="q2b"><label for="q2b">B: &lt;php&gt;</label></div>
+                <div class="answer-option"><input type="radio" name="q2" value="C" id="q2c"><label for="q2c">C: &lt;?php&gt;</label></div>
+                <div class="answer-option"><input type="radio" name="q2" value="D" id="q2d"><label for="q2d">D: &lt;!php&gt;</label></div>
+            </div>
+
+            <!-- Question 3 -->
+            <div class="question-container">
+                <p>3. Quelle fonction est utilisée pour inclure un fichier PHP dans un autre fichier PHP ?</p>
+                <div class="answer-option"><input type="radio" name="q3" value="A" id="q3a"><label for="q3a">A: include()</label></div>
+                <div class="answer-option"><input type="radio" name="q3" value="B" id="q3b"><label for="q3b">B: require()</label></div>
+                <div class="answer-option"><input type="radio" name="q3" value="C" id="q3c"><label for="q3c">C: import()</label></div>
+                <div class="answer-option"><input type="radio" name="q3" value="D" id="q3d"><label for="q3d">D: attach()</label></div>
+            </div>
+
+             <!-- Question 4 -->
+             <div class="question-container">
+                <p>4. Quel opérateur est utilisé pour concaténer des chaînes de caractères en PHP ?</p>
+                <div class="answer-option"><input type="radio" name="q4" value="A" id="q4a"><label for="q4a">A: +</label></div>
+                <div class="answer-option"><input type="radio" name="q4" value="B" id="q4b"><label for="q4b">B: &amp;</label></div>
+                <div class="answer-option"><input type="radio" name="q4" value="C" id="q4c"><label for="q4c">C: .</label></div>
+                <div class="answer-option"><input type="radio" name="q4" value="D" id="q4d"><label for="q4d">D: *</label></div>
+            </div>
+
+            <!-- Question 5 -->
+            <div class="question-container">
+                <p>5. Quelle est l'extension de fichier par défaut pour les fichiers PHP ?</p>
+                <div class="answer-option"><input type="radio" name="q5" value="A" id="q5a"><label for="q5a">A: .html</label></div>
+                <div class="answer-option"><input type="radio" name="q5" value="B" id="q5b"><label for="q5b">B: .php</label></div>
+                <div class="answer-option"><input type="radio" name="q5" value="C" id="q5c"><label for="q5c">C: .phtml</label></div>
+                <div class="answer-option"><input type="radio" name="q5" value="D" id="q5d"><label for="q5d">D: .php5</label></div>
+            </div>
+
+            <!-- Question 6 -->
+            <div class="question-container">
+                <p>6. Quelle fonction est utilisée pour obtenir la longueur d'une chaîne de caractères en PHP ?</p>
+                <div class="answer-option"><input type="radio" name="q6" value="A" id="q6a"><label for="q6a">A: length()</label></div>
+                <div class="answer-option"><input type="radio" name="q6" value="B" id="q6b"><label for="q6b">B: str_len()</label></div>
+                <div class="answer-option"><input type="radio" name="q6" value="C" id="q6c"><label for="q6c">C: strlen()</label></div>
+                <div class="answer-option"><input type="radio" name="q6" value="D" id="q6d"><label for="q6d">D: size()</label></div>
+            </div>
+
+            <!-- Question 7 -->
+            <!-- Question 7 -->
+<div class="question-container">
+    <p>7. Comment est-ce que PHP peut interagir avec une base de données MySQL ?</p>
+    <div class="answer-option"><input type="radio" name="q7" value="A" id="q7a"><label for="q7a">A: mysqli_connect()</label></div>
+    <div class="answer-option"><input type="radio" name="q7" value="B" id="q7b"><label for="q7b">B: mysql_query()</label></div>
+    <div class="answer-option"><input type="radio" name="q7" value="C" id="q7c"><label for="q7c">C: PDO::connect()</label></div>
+    <div class="answer-option"><input type="radio" name="q7" value="D" id="q7d"><label for="q7d">D: mysql_connect()</label></div>
+</div>
+
+<!-- Question 8 -->
+<div class="question-container">
+    <p>8. Quelle fonction est utilisée pour afficher des informations sur une variable en PHP ?</p>
+    <div class="answer-option"><input type="radio" name="q8" value="A" id="q8a"><label for="q8a">A: print()</label></div>
+    <div class="answer-option"><input type="radio" name="q8" value="B" id="q8b"><label for="q8b">B: var_dump()</label></div>
+    <div class="answer-option"><input type="radio" name="q8" value="C" id="q8c"><label for="q8c">C: echo()</label></div>
+    <div class="answer-option"><input type="radio" name="q8" value="D" id="q8d"><label for="q8d">D: show()</label></div>
+</div>
+
+<!-- Question 9 -->
+<div class="question-container">
+    <p>9. Comment est-ce qu'on déclare une variable en PHP ?</p>
+    <div class="answer-option"><input type="radio" name="q9" value="A" id="q9a"><label for="q9a">A: $variable;</label></div>
+    <div class="answer-option"><input type="radio" name="q9" value="B" id="q9b"><label for="q9b">B: var $variable;</label></div>
+    <div class="answer-option"><input type="radio" name="q9" value="C" id="q9c"><label for="q9c">C: variable $;</label></div>
+    <div class="answer-option"><input type="radio" name="q9" value="D" id="q9d"><label for="q9d">D: declare variable $;</label></div>
+</div>
+
+<!-- Question 10 -->
+<div class="question-container">
+    <p>10. Quel type de données peut être utilisé comme clé dans un tableau associatif PHP ?</p>
+    <div class="answer-option"><input type="radio" name="q10" value="A" id="q10a"><label for="q10a">A: Seulement des chaînes de caractères</label></div>
+    <div class="answer-option"><input type="radio" name="q10" value="B" id="q10b"><label for="q10b">B: Seulement des entiers</label></div>
+    <div class="answer-option"><input type="radio" name="q10" value="C" id="q10c"><label for="q10c">C: Des chaînes de caractères et des entiers</label></div>
+    <div class="answer-option"><input type="radio" name="q10" value="D" id="q10d"><label for="q10d">D: Aucun des choix</label></div>
+</div>
+
+            <button type="button">Soumettre les réponses</button>
+        </form>
+
+        
+    </div>
+
+
+
+</body>
+</html>
