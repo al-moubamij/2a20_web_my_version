@@ -349,13 +349,13 @@ header {
   margin-top: 0px;
   margin-bottom: 15px;
   font-size: 48px;
-  color: #fff;
+  color: #f2f1f5;
   font-weight: 700;
 }
 
 .Modern-Slider .info p {
-  font-size: 15px;
-  color: #fff;
+  font-size: 50px;
+  color: #f1f0f5;
 }
 
 .Modern-Slider .info .white-button {
@@ -414,15 +414,15 @@ header {
 }
 
 .Modern-Slider .item-1 .image {
-  background-image: url(../img/slide_1.jpg);
+  background-image: url(../img/img1.jpg);
 }
 
 .Modern-Slider .item-2 .image {
-  background-image: url(../img/slide_2.jpg);
+  background-image: url(../img/img2.jpg);
 }
 
 .Modern-Slider .item-3 .image {
-  background-image: url(../img/slide_3.jpg);
+  background-image: url(../img/img3.jpg);
 }
 
 .Modern-Slider .PrevArrow:before{content:'\f104';}
@@ -1045,29 +1045,7 @@ header {
     padding-right: 15px;
   }
 
-  #video {
-    padding-left: 15px;
-    padding-right: 15px;
-  }
-
-  #blog {
-    padding-left: 15px;
-    padding-right: 15px;
-  }
-
-  #blog .tabs a {
-    font-size: 13px;
-  }
-
-  #blog .tabgroup ul li img {
-    float: none;
-    width: 100%;
-    margin-bottom: 15px;
-  }
-  #blog .tabgroup ul li .text-content {
-    display: block;
-  }
-
+ 
   #contact-content {
     padding-left: 15px;
     padding-right: 15px;

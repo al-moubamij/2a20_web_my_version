@@ -1,0 +1,75 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    text-align: center;
+    padding: 1px 0;
+    background-color: #004080;
+    color: white;
+}
+
+h1 {
+    margin: 0;
+    font-size: 2.5em;
+}
+
+p {
+    margin: 0.5em 0;
+    font-size: 1.2em;
+}
+
+#evenements {
+    width: 50%;
+    margin: 20px auto;
+}
+
+.event-card {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.event-card img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.event-card h3 {
+    color: #333;
+    margin: 15px 0;
+}
+
+.event-card p {
+    color: #777;
+    margin-bottom: 30px;
+}
+
+.event-card .btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: rgb(74, 17, 127);
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.event-card .btn:hover {
+    background-color: blueviolet;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: blueviolet;
+    color: white;
+    margin-top: 50px;
+}

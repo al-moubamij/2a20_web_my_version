@@ -1,0 +1,113 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.section-contenu {
+    max-width: 800px;
+    margin: 40px auto; /* Augmentez la marge pour plus d'espace entre les sections */
+    padding: 40px; /* Ajoutez plus de padding pour agrandir la section */
+    background-color: #f4f4f4;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+textarea, select, .bouton-confirmer, .bouton-annuler {
+    width: 100%;
+    margin-top: 5px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.boutons-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.bouton-confirmer {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+}
+
+.bouton-confirmer:hover {
+    background-color: #45a049;
+}
+
+.bouton-annuler {
+    background-color:blueviolet;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border: none;
+}
+
+.bouton-annuler:hover {
+    background-color: blueviolet;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.table th, .table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+.table th {
+    background-color: #f2f2f2;
+    text-align: left;
+}
+
+.table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.table tr:hover {
+    background-color: #f1f1f1;
+}
+
+.btn {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 3px;
+    color: white;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background-color: #007BFF;
+}
+
+.btn-primary:hover {
+    background-color: #0069d9;
+}
+
+.btn-danger {
+    background-color: #420080;
+}
+
+.btn-danger:hover {
+    background-color: #420080;
+}
+
+/* Séparateur horizontal stylisé */
+hr {
+    border: none;
+    border-top: 2px solid #ccc;
+    margin: 40px 0; /* Espace de séparation ajouté */
+}
