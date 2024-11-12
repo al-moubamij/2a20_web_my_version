@@ -45,7 +45,7 @@ textarea, select, .bouton-confirmer, .bouton-annuler {
 }
 
 .bouton-annuler {
-    background-color:blueviolet;
+    background-color:#45489a;
     color: white;
     text-align: center;
     text-decoration: none;
@@ -54,7 +54,7 @@ textarea, select, .bouton-confirmer, .bouton-annuler {
 }
 
 .bouton-annuler:hover {
-    background-color: blueviolet;
+    background-color: #45489a;
 }
 
 .table {
