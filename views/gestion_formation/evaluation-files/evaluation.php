@@ -1,4 +1,8 @@
-
+<?php
+include 'C:\xampp\htdocs\projetWeb2A20\controller\noteController.php';
+$noteController = new noteController();
+$list = $noteController->listNote();
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -39,7 +43,7 @@ https://templatemo.com/tm-518-sentra
         <nav>
             <ul>
                 <li>
-                    <a href="../index.html">
+                    <a href="../index.php">
                         <span class="rect"></span>
                         <span class="circle"></span>
                         Home
@@ -93,6 +97,26 @@ https://templatemo.com/tm-518-sentra
             </table>
         </div>
     </div>
+
+    <?php
+        foreach ($list as $offer) {
+        ?> 
+            <div class="col-md-6 col-lg-4 mb-5">
+                <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal1">
+                    
+                    <img class="img-fluid" src="assets/img/circus.png" alt="..." />
+                </div>
+                <div class="portfolio-caption" align="center">
+            <h4><?php echo $offer['full_name']; ?></h4>
+            <p class="text-muted"><?php echo $offer['destination']; ?></p>
+            <p class="text-muted">Price: <?php echo $offer['price']; ?> $</p>
+          </div>
+            </div>
+      
+            <?php
+    }
+    ?>
+
     <div class="footerr">
         <section class="footer">
             <p>Copyright &copy; 2024 Instruvia 

@@ -20,7 +20,7 @@ jQuery(document).ready(function($) {
           });
 
         $('#nav-toggle').on('click', function (event) {
-            event.preventDefault();
+            //event.preventDefault();
             $('#main-nav').toggleClass("open");
         });
 

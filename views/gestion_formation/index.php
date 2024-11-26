@@ -31,7 +31,7 @@ https://templatemo.com/tm-518-sentra
 
 <body>
 
-
+    
 
         <header class="nav-down responsive-nav hidden-lg hidden-md">
             <button type="button" id="nav-toggle" class="navbar-toggle" data-toggle="collapse" data-target="#main-nav">
@@ -46,7 +46,7 @@ https://templatemo.com/tm-518-sentra
                     <ul class="nav navbar-nav">
                         <li><a href="#top">Home</a></li>
                         <li><a href="#formations" class="scroll">Formations</a></li>
-                        <li><a href="evaluation-files/evaluation.html">Evaluation</a></li>
+                        <li><a href="evaluation-files/evaluation.php">Evaluation</a></li>
                     </ul>
                 </nav>
             </div>
@@ -72,7 +72,7 @@ https://templatemo.com/tm-518-sentra
                             Formations
                         </a>
                         <li>
-                            <a href="evaluation-files/evaluation.html">
+                            <a href="evaluation-files/evaluation.php">
                                 <span class="rect"></span>
                                 <span class="circle"></span>
                                 Evaluation
