@@ -1,7 +1,7 @@
 <?php
-include('C:\xampp\htdocs\projetWeb2A20\CONFIG\config.php');
-include('C:\xampp\htdocs\projetWeb2A20\modles\note.php');
 
+include_once(__DIR__ . '/../CONFIG/config.php');
+include_once(__DIR__ . '/../modles/note.php');
 class noteController
 {
     public function listNote()
@@ -20,10 +20,12 @@ class noteController
     {
         $sql = "DELETE FROM notes WHERE id = :id";
         $db = config::getConnexion();
-        $req = $db->prepare($sql);
-        $req->bindValue(':id', $id);
+        /*$req = $db->prepare($sql);
+        $req->bindValue(':id', $id);*/
 
         try {
+            $req = $db->prepare($sql);
+            $req->bindValue(':id', $id, PDO::PARAM_INT);
             $req->execute();
         } catch (Exception $e) {
             die('Error:' . $e->getMessage());
@@ -38,18 +40,22 @@ class noteController
             return;
         }
 
+        
+
         var_dump($Note);
-        $sql = "INSERT INTO notes  
-        VALUES (NULL, :full_name,:matiere, :note, :commentaire)";
+        $sql = "INSERT INTO notes  (id, full_name,matiere, note, commentaire, progressId)
+        VALUES (:id, :full_name,:matiere, :note, :commentaire ,:progressId)";
         $db = config::getConnexion();
         try {
             
             $query = $db->prepare($sql);
             $query->execute([
+                'id' => $Note->getId(),
                 'full_name' => $Note->getFullName(),
                 'matiere' => $Note->getMatiere(),
                 'note' => $Note->getNote(), 
-                'commentaire' => $Note->getCommentaire()
+                'commentaire' => $Note->getCommentaire(),
+                'progressId' => $Note->getProgressId()
             ]);
         } catch (Exception $e) {
             echo 'Error: ' . $e->getMessage();
@@ -88,6 +94,21 @@ class noteController
 }
 
 function show($id)
+    {
+        $sql = "SELECT * from notes where id = $id";
+        $db = config::getConnexion();
+        try {
+            $query = $db->prepare($sql);
+            $query->execute();
+
+            $note = $query->fetch();
+            return $note;
+        } catch (Exception $e) {
+            die('Error: ' . $e->getMessage());
+        }
+    }
+
+    function showProgress($id)
     {
         $sql = "SELECT * from notes where id = $id";
         $db = config::getConnexion();

@@ -1,11 +1,12 @@
 <?php
 class progress {
-    private int $id;
+    private string $id;
     private float $completion_percentage;
     private DateTime $starting_date;
     private DateTime $last_active_date;
+    
 
-    public function __construct(int $id, float $completion_percentage, DateTime $starting_date, DateTime $last_active_date) {
+    public function __construct(string $id, float $completion_percentage, DateTime $starting_date, DateTime $last_active_date) {
         
         $this->id = $id;
         $this->completion_percentage = $completion_percentage;
@@ -14,7 +15,7 @@ class progress {
     }
 
     // Getters
-    public function getId(): int {
+    public function getId(): string {
         return $this->id;
     }
 
@@ -30,6 +31,9 @@ class progress {
         return $this->last_active_date->format('Y-m-d');
     }
 
+    public function getProgressId(): string {
+        return $this->progressId;
+    }   
     // Setters
    
 

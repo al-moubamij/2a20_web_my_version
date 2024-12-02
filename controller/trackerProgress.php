@@ -1,5 +1,6 @@
 <?php
-include(__DIR__ . '/../CONFIG/config.php');
+include_once(__DIR__ . '/../CONFIG/config.php');
+
 include_once(__DIR__ . '/../modles/progress.php');
 
 
@@ -31,24 +32,29 @@ class progressController
 
     function addProgress($progress)
     {
-        // Validation: Ensure progress object contains valid data
-        if (empty($progress->getCompletion_percentage()) || empty($progress->getStarting_date()) || empty($progress->getLast_active_date())) {
-            echo 'All fields are required.';
-            return;
+        if (!$progress->getId()) {
+            throw new Exception('Progress ID is required');
         }
 
-        $sql = "INSERT INTO track_progress (completion_percentage, starting_date, last_active_date) 
-                VALUES (:completion_percentage, :starting_date, :last_active_date)";
+        $sql = "INSERT INTO track_progress (id, completion_percentage, starting_date, last_active_date) 
+                VALUES (:id, :completion_percentage, :starting_date, :last_active_date)";
         $db = config::getConnexion();
         try {
             $query = $db->prepare($sql);
-            $query->execute([
+            $result = $query->execute([
+                'id' => $progress->getId(),
                 'completion_percentage' => $progress->getCompletion_percentage(),
                 'starting_date' => $progress->getStarting_date(),
-                'last_active_date' => $progress->getLast_active_date(),
+                'last_active_date' => $progress->getLast_active_date()
             ]);
+            
+            if (!$result) {
+                throw new Exception('Failed to insert progress record');
+            }
+            
+            return true;
         } catch (Exception $e) {
-            echo 'Error: ' . $e->getMessage();
+            throw new Exception('Error adding progress: ' . $e->getMessage());
         }
     }
 

@@ -1,12 +1,13 @@
 <?php
 class Note {
-    private int $id;
+    private string $id;
     private string $full_name;
     private string $matiere;
     private int $note;
     private string $commentaire;
+    private string $progress;
 
-    public function __construct(int $id, string $full_name, string $matiere, int $note, string $commentaire) {
+    public function __construct(string $id, string $full_name, string $matiere, int $note, string $commentaire,string $progress) {
         if ($note < 0 || $note > 100) {
             throw new InvalidArgumentException("Grade must be between 0 and 100.");
         }
@@ -15,10 +16,11 @@ class Note {
         $this->matiere = $matiere;
         $this->note = $note;
         $this->commentaire = $commentaire;
+        $this->progress = $progress;
     }
 
     // Getters
-    public function getId(): int {
+    public function getId(): string {
         return $this->id;
     }
 
@@ -36,6 +38,10 @@ class Note {
 
     public function getCommentaire(): string {
         return $this->commentaire;
+        }
+
+    public function getProgressId(): string {
+        return $this->progress;
     }
 
     // Setters
@@ -48,7 +54,7 @@ class Note {
 
     public function setCommentaire(string $commentaire): void {
         $this->commentaire = $commentaire;
-    }
+        }
 
     // Show method
     public function show(): void {
@@ -57,6 +63,7 @@ class Note {
         echo "Subject: {$this->matiere}\n";
         echo "Grade: {$this->note}\n";
         echo "Comment: {$this->commentaire}\n";
+        echo "Progress: {$this->progress}\n";
     }
 }
 ?>
