@@ -8,7 +8,7 @@ class progressController
 {
     public function listProgress()
     {
-        $sql = "SELECT * FROM track_progress";
+        $sql = "SELECT * FROM progress";
         $db = config::getConnexion();
         try {
             return $db->query($sql);
@@ -19,7 +19,7 @@ class progressController
 
     function deleteProgress($id)
     {
-        $sql = "DELETE FROM track_progress WHERE id = :id";
+        $sql = "DELETE FROM progress WHERE id = :id";
         $db = config::getConnexion();
         try {
             $req = $db->prepare($sql);
@@ -36,7 +36,7 @@ class progressController
             throw new Exception('Progress ID is required');
         }
 
-        $sql = "INSERT INTO track_progress (id, completion_percentage, starting_date, last_active_date) 
+        $sql = "INSERT INTO progress (id, completion_percentage, starting_date, last_active_date) 
                 VALUES (:id, :completion_percentage, :starting_date, :last_active_date)";
         $db = config::getConnexion();
         try {
@@ -62,7 +62,7 @@ class progressController
     {
         try {
             $db = config::getConnexion();
-            $sql = "UPDATE track_progress SET 
+            $sql = "UPDATE progress SET 
                     completion_percentage = :completion_percentage,
                     starting_date = :starting_date,
                     last_active_date = :last_active_date
@@ -84,7 +84,21 @@ class progressController
 
     function show($id)
     {
-        $sql = "SELECT * FROM track_progress WHERE id = :id";
+        $sql = "SELECT * FROM progress WHERE id = :id";
+        $db = config::getConnexion();
+        try {
+            $query = $db->prepare($sql);
+            $query->execute(['id' => $id]);
+
+            return $query->fetch();
+        } catch (Exception $e) {
+            die('Error: ' . $e->getMessage());
+        }
+    }
+
+    function showNote($id)
+    {
+        $sql = "SELECT * FROM notes WHERE  progressId= :id";
         $db = config::getConnexion();
         try {
             $query = $db->prepare($sql);
