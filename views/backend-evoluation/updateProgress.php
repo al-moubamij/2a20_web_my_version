@@ -2,6 +2,7 @@
 
 include(__DIR__ .'/../../controller/trackerProgress.php');
 $controller = new progressController();
+
 $id = null;
 $completion_percentage = $starting_date = $last_active_date  = "";
 $error = "";
@@ -11,10 +12,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (!isset($_POST['id'])) {
         echo "ID not received.";
         return;
-    } else {
-        $id = (int)$_POST['id'];
+    } 
+    else {
+        $id = $_POST['id'];
+        echo $id;
+        $listProgress = $controller->show($id);
     }
-
 
     if (
         isset($_POST["completion_percentage"]) && isset($_POST["starting_date"]) && isset($_POST["last_active_date"])
@@ -23,11 +26,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             !empty($_POST["completion_percentage"]) && !empty($_POST["starting_date"]) && !empty($_POST["last_active_date"]) 
             ) {
             $prog = new progress(
-                $id,
+                "test",
                 $_POST['completion_percentage'],
                 new DateTime($_POST['starting_date']),
                 new DateTime($_POST['last_active_date'])
             );
+            var_dump($prog);
+            echo "<br>";
 
             $controller->updateProgress($prog, $id);
             header('Location:listProgress.php');
@@ -87,15 +92,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             <label for="completion_percentage">Completion Percentage:</label>
             <input type="number" name="completion_percentage" id="completion_percentage" min="0" max="100" class="form-control"
-                   value="<?php echo htmlspecialchars($completion_percentage); ?>" required>
+                   value="<?php echo htmlspecialchars($listProgress['completion_percentage']); ?>" required>
 
             <label for="starting_date">Starting Date:</label>
             <input type="date" name="starting_date" id="starting_date" class="form-control"
-                   value="<?php echo htmlspecialchars($starting_date); ?>" required>
+                   value="<?php echo htmlspecialchars($listProgress['starting_date']); ?>" required>
 
             <label for="last_active_date">Last Active Date:</label>
             <input type="date" name="last_active_date" id="last_active_date" class="form-control"
-                   value="<?php echo htmlspecialchars($last_active_date); ?>" required>
+                   value="<?php echo htmlspecialchars($listProgress['last_active_date']); ?>" required>
 
             <button type="submit" class="btn btn-primary mt-3">Update Progress</button>
         </form>

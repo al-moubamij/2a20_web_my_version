@@ -73,7 +73,7 @@ class progressController
                 'id' => $id,
                 'completion_percentage' => $progress->getCompletion_percentage(),
                 'starting_date' => $progress->getStarting_date(),
-                'last_active_date' => $progress->getLast_active_date(),
+                'last_active_date' => $progress->getLast_active_date()
             ]);
 
             echo $query->rowCount() . " records UPDATED successfully <br>";

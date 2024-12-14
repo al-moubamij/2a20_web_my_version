@@ -31,9 +31,7 @@ class progress {
         return $this->last_active_date->format('Y-m-d');
     }
 
-    public function getProgressId(): string {
-        return $this->progressId;
-    }   
+    
     // Setters
    
 
